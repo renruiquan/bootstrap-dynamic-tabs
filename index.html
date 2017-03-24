@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>bootstrap-动态添加Tab</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="ace.min.css">
+</head>
+
+<body style="background-color:white;">
+    <div class="container">
+        <div class="row hr-16">
+            <div class="col-lg-12">
+                <button class="btn btn-success">添加Tab</button>
+            </div>
+        </div>
+        <div class="row hr-16">
+            <div class="col-sm-12">
+                <!-- #section:elements.tab -->
+                <div class="tabbable">
+                    <ul class="nav nav-tabs" id="myTab">
+                        <li class="active">
+                            <a data-toggle="tab" href="#home">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a data-toggle="tab" href="#messages">
+                                Messages
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade in active">
+                            <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+                        </div>
+
+                        <div id="messages" class="tab-pane fade">
+                            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- /section:elements.tab -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+<script type="text/javascript" src="bootstrap-dynamic-tabs.js"></script>
+
+<script type="text/javascript">
+
+
+
+    $(function () {
+        var tabs = $("ul.nav-tabs");
+
+        $("button").on("click", function () {
+            var count = $(".nav-tabs li").length;
+
+            $.get("template.html", function (data) {
+                tabs.addTabs({
+                    "id": "abc" + count,
+                    "title": "新建工单-" + count,
+                    "content": "<p><h1>新建工单-" + count + "的内容</h1></p>" + data
+                });
+            });
+
+
+        });
+    });
+
+
+
+</script>
